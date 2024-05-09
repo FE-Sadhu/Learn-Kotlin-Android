@@ -28,12 +28,14 @@ class FirstActivity : AppCompatActivity() {
         binding.btn1.setOnClickListener {
             showToast("点了按钮一")
         }
+
+        binding.btn2.setOnClickListener {
+            showToast("销毁当前 Activity")
+            finish();
+        }
         setContentView(binding.root);
     }
 
-    private fun showToast(text: String) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // 给当前 Activity 创建菜单
         menuInflater.inflate(R.menu.main, menu);
@@ -48,5 +50,9 @@ class FirstActivity : AppCompatActivity() {
         }
         // return true 表示希望显示出来
         return true
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
     }
 }
