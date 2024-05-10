@@ -13,9 +13,25 @@
         android:theme="@style/Theme.ActivityTest"
         tools:targetApi="31">
         <activity
+            android:name=".ThirdActivity"
+            android:exported="true" >
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".SecondActivity"
-            android:label="Second Activity"
-            android:exported="false" />
+            android:exported="true"
+            android:label="Second Activity">
+            <intent-filter>
+                <action android:name="com.example.activitytest.SEC" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="MyCate" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FirstActivity"
             android:exported="true"
@@ -29,6 +45,7 @@
             <!-- 使得其他组件或系统能够正确地将意图发送到相应的组件。 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

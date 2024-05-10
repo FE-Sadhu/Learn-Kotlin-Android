@@ -1,6 +1,7 @@
 package com.example.activitytest
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -28,15 +29,30 @@ class FirstActivity : AppCompatActivity() {
         binding = FirstLayoutBinding.inflate(layoutInflater)
         binding.btn1.setOnClickListener {
 //            showToast("点了按钮一")
-            // 显示 Intent
-            val intent = Intent(this, SecondActivity::class.java)
+            // 显示 Intent --- 创建 Intent 时明确指明我要启动哪个 Intent
+//            val intent = Intent(this, SecondActivity::class.java)
+
+            // 隐式 Intent --- 创建时只指明启动的 action 和 category
+            // 由系统调度给适合处理的 intent-filter Activity 处理
+            val intent = Intent("com.example.activitytest.SEC")
+            intent.addCategory("MyCate")
             startActivity(intent)
         }
 
 
         binding.btn2.setOnClickListener {
-            showToast("销毁当前 Activity ")
-            finish();
+//            showToast("销毁当前 Activity ")
+//            finish();
+            /**
+             *
+             * Intent.ACTION_VIEW 用于启动一个 Activity 来显示指定的数据。
+             * 这个 Intent 告诉系统你想要查看某种数据（比如一个网页、一个图片、一个视频等）
+             * 然后系统会启动适合查看该数据的应用程序（比如浏览器、图片查看器、视频播放器等）来显示这个数据。
+             *
+             */
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://www.baidu.com/");
+            startActivity(intent)
         }
         setContentView(binding.root);
     }
