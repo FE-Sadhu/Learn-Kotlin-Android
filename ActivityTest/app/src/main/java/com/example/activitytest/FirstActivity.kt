@@ -1,5 +1,6 @@
 package com.example.activitytest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -26,11 +27,15 @@ class FirstActivity : AppCompatActivity() {
 //        ViewBinding 写法
         binding = FirstLayoutBinding.inflate(layoutInflater)
         binding.btn1.setOnClickListener {
-            showToast("点了按钮一")
+//            showToast("点了按钮一")
+            // 显示 Intent
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
         }
 
+
         binding.btn2.setOnClickListener {
-            showToast("销毁当前 Activity")
+            showToast("销毁当前 Activity ")
             finish();
         }
         setContentView(binding.root);
