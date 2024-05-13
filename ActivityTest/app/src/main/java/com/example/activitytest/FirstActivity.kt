@@ -13,6 +13,17 @@ import com.example.activitytest.databinding.FirstLayoutBinding
 class FirstActivity : AppCompatActivity() {
     private lateinit var binding: FirstLayoutBinding
 
+    /**
+     * 在 Activity 被销毁之前调用 --- 完整生存期-结束
+     */
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    /**
+     * 在 Activity 第一次被创建时调用。 --- 完整生存期-开始
+     * 适合初始化工作，加载布局、绑定事件等。
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -77,5 +88,41 @@ class FirstActivity : AppCompatActivity() {
 
     private fun showToast(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    }
+
+    /**
+     * Activity 由不可见变为可见时调用 --- 可见性生存期-可见
+     */
+    override fun onStart() {
+        super.onStart()
+    }
+
+    /**
+     * 在 Activity 完全不可见时调用 --- 可见性生存期-不可见
+     */
+    override fun onStop() {
+        super.onStop()
+    }
+
+    /**
+     * 当 Activity 处于返回栈栈顶，并且处于运行状态时(也就是可以与用户交互) --- 前台生存期-前台
+     */
+    override fun onResume() {
+        super.onResume()
+    }
+
+    /**
+     * 在系统准备去启动或恢复另一个 Activity 时调用。(此时当前 Activity 是可能可见的，这也是与 onStop 的区别) --- 前台生存期-后台（也就是不处于运行状态）
+     */
+    override fun onPause() {
+        super.onPause()
+    }
+
+
+    /**
+     * 在 Activity 由停止状态变为运行状态之前调用，也就是被重新启动了
+     */
+    override fun onRestart() {
+        super.onRestart()
     }
 }
