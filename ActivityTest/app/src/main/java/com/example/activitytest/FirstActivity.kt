@@ -30,12 +30,14 @@ class FirstActivity : AppCompatActivity() {
         binding.btn1.setOnClickListener {
 //            showToast("点了按钮一")
             // 显示 Intent --- 创建 Intent 时明确指明我要启动哪个 Intent
-//            val intent = Intent(this, SecondActivity::class.java)
+            val data = "Activity 之间传递数据"
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("extra", data);
 
             // 隐式 Intent --- 创建时只指明启动的 action 和 category
             // 由系统调度给适合处理的 intent-filter Activity 处理
-            val intent = Intent("com.example.activitytest.SEC")
-            intent.addCategory("MyCate")
+//            val intent = Intent("com.example.activitytest.SEC")
+//            intent.addCategory("MyCate")
             startActivity(intent)
         }
 
