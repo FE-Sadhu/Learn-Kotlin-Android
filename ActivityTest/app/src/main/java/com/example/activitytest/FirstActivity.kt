@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -124,5 +125,13 @@ class FirstActivity : AppCompatActivity() {
      */
     override fun onRestart() {
         super.onRestart()
+    }
+
+    /**
+     * 当 Activity 被系统回收内存时会调用，我们可以存数据，然后在 onCreate 里取出来
+     */
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
     }
 }
