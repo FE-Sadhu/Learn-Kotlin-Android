@@ -10,9 +10,10 @@ import android.widget.Button
 class SecondActivity : BaseActivity() {
     companion object  {
         fun actionStart(context: Context, data1: String, data2: String) {
-            val intent = Intent(context, SecondActivity::class.java)
-            intent.putExtra("params1", data1)
-            intent.putExtra("params2", data2)
+            val intent = Intent(context, SecondActivity::class.java).apply {
+                putExtra("params1", data1)
+                putExtra("params2", data2)
+            }
             context.startActivity(intent)
         }
     }
