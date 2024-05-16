@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<!--    1. 可以直接 include 一个布局 -->
+<!--    <include layout="@layout/title" />-->
+
+<!--    2. 引入一个自定义组件，然后在组件内 infalte 这个布局-->
+    <com.example.uicustomviews.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
