@@ -7,7 +7,6 @@ import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.example.broadcasttest.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,11 +26,13 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.button.setOnClickListener {
-            // 发起标准广播
             val intent = Intent("com.example.broadcasttest.MY_BROADCAST")
             // setPackage 指定接收 intent 的包名，让其变成一个显示广播。
             intent.setPackage(packageName)
-            sendBroadcast(intent)
+//            发起标准广播
+//            sendBroadcast(intent)
+            // 发起有序广播
+            sendOrderedBroadcast(intent, null)
         }
     }
 

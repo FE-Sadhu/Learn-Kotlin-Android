@@ -19,10 +19,18 @@ Android 系统为了保护用户设备的安全和隐私，做了严格的规定
         android:theme="@style/Theme.BroadcastTest"
         tools:targetApi="31">
         <receiver
-            android:name=".MyBroadcastReceiver"
+            android:name=".AnotherBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
+                <action android:name="com.example.broadcasttest.MY_BROADCAST" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="100">
                 <action android:name="com.example.broadcasttest.MY_BROADCAST" />
             </intent-filter>
         </receiver>
