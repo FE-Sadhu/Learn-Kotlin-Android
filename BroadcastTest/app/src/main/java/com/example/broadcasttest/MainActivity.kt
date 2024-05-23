@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         unregisterReceiver(timeChangeReceiver)
     }
-    
+
     // 监听广播
     inner class TimeChangeReceiver: BroadcastReceiver() {
         override fun onReceive(p0: Context?, p1: Intent?) {
