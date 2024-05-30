@@ -42,5 +42,18 @@ class MainActivity : AppCompatActivity() {
             }
             db.insert("Book", null, value1)
         }
+
+        val updateData = findViewById<Button>(R.id.update_data)
+        updateData.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            val value = ContentValues().apply {
+                put("price", 666.66)
+            }
+            db.update("Book", value, "id=?", arrayOf("1"))
+            val value1 = ContentValues().apply {
+                put("name", "小捞捞的幸福之旅")
+            }
+            db.update("Book", value1, "name=?", arrayOf("技术为本"))
+        }
     }
 }
