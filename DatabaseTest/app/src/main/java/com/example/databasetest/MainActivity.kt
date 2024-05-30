@@ -1,5 +1,6 @@
 package com.example.databasetest
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,29 @@ class MainActivity : AppCompatActivity() {
             // 调用会创建或打开一个现有的数据库（如果数据库已存在则直接打开，否则要创建一个新的数据库），
             // 并返回一个可对数据库进行写操作的对象。 （getReadableDatabase 就返回进行读操作的对象）
             dbHelper.writableDatabase
+        }
+
+        val addData = findViewById<Button>(R.id.add_data)
+        addData.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            val value = ContentValues().apply {
+                put("name", "Sadhu 的幸福之旅")
+                put("author", "Sadhu")
+                put("pages", 666)
+                put("price", 66.66)
+            }
+            // insert 是往表里增加数据
+            // 第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值 NULL，
+            // 一般我们用不到这个功能，直接传入 null 即可
+            db.insert("Book", null, value)
+
+            val value1 = ContentValues().apply {
+                put("name", "技术为本")
+                put("author", "小捞捞")
+                put("pages", 888)
+                put("price", 88.88)
+            }
+            db.insert("Book", null, value1)
         }
     }
 }
