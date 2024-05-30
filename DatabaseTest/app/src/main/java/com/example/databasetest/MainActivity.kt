@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btn = findViewById<Button>(R.id.createDb)
-        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 1)
+        val dbHelper = MyDatabaseHelper(this, "BookStore.db", 2)
 
         btn.setOnClickListener {
             // 本质是调用 getWritableDatabase 方法
