@@ -55,5 +55,12 @@ class MainActivity : AppCompatActivity() {
             }
             db.update("Book", value1, "name=?", arrayOf("技术为本"))
         }
+
+        val delData = findViewById<Button>(R.id.dele_data);
+        delData.setOnClickListener {
+            val db = dbHelper.writableDatabase
+            // 删除 id 大于 2 的数据
+            db.delete("Book", "id > ?", arrayOf("2"))
+        }
     }
 }
