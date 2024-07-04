@@ -36,6 +36,7 @@ class MyService : Service() {
     override fun onCreate() {
         super.onCreate()
         Log.d(TAG, "onCreate 执行 ")
+        // 在这里创建 notify push ，最后调用 startForeground 方法将其变为前台 service，其就会在后台一直保活了。
     }
 
     /**
