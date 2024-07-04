@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
+import kotlin.concurrent.thread
 
 class MyService : Service() {
     private val TAG = "MyService"
@@ -44,6 +45,14 @@ class MyService : Service() {
      */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "onStartCommand: 执行")
+        // 1. 因为 service 运行在主线程，所以执行耗时任务会阻塞 UI，所以可以开在一个子线程里执行
+        // 2. 不想写如下 thread 语法和 stopSelf 方法，可以创建 intentService ，在其重载的 onHandleIntent 里处理具体的逻辑也是异步的。
+        thread {
+            // 处理具体的逻辑
+
+            // 执行完具体的逻辑后，销毁自身
+            stopSelf()
+        }
         return super.onStartCommand(intent, flags, startId)
     }
 
