@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.lang.Exception
@@ -19,8 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.sendRequestBtn)
         btn.setOnClickListener {
-            sendRequestWithHttpURLConnection()
+//            sendRequestWithHttpURLConnection()
+            sendRequestWithOkHttp()
         }
+
     }
 
     private fun sendRequestWithHttpURLConnection() {
@@ -46,6 +50,24 @@ class MainActivity : AppCompatActivity() {
             } finally {
                 // 关闭 Http 连接
                 connection?.disconnect()
+            }
+        }
+    }
+
+    private fun sendRequestWithOkHttp() {
+        thread {
+            try {
+                val client = OkHttpClient()
+                val request = Request.Builder()
+                    .url("https://www.baidu.com")
+                    .build()
+                val response = client.newCall(request).execute()
+                val responseData = response.body?.string()
+                if (responseData != null) {
+                    showResponse(responseData)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
     }
